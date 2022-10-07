@@ -8,6 +8,8 @@
 #include <QProgressBar>
 #include <QMovie>
 
+#include <QTimer>
+
 #include "player.h"
 #include "monster.h"
 
@@ -26,6 +28,8 @@ public:
 private:
     Ui::Widget *ui;
 
+    static int time_pea;
+
     Player *player;
     Monster *monster;
 
@@ -35,9 +39,15 @@ private:
     QLabel *lab_Player;
     QLabel *lab_Monster;
 
+    QLabel *lab_Pea;
+    QLabel *lab_Round;
 
     QProgressBar *playerHP;
     QProgressBar *monsterHP;
+
+signals:
+    void setPlayerDamage(int num);
+    void setMonsterDamage(int num);
 };
 
 #endif // WIDGET_H
