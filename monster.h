@@ -2,9 +2,14 @@
 #define MONSTER_H
 
 #include <QWidget>
-#include <QThread>
+#include <QLabel>
+#include <QMovie>
+#include <QProgressBar>
 
-class Monster : public QThread
+#include "widget.h"
+#include "player.h"
+
+class Monster : public QWidget
 {
     Q_OBJECT
 public:
@@ -13,18 +18,24 @@ public:
     int getHp();
     int getAttack();
     int getDefence();
+
+    void monsterMain(QWidget *parent = 0);
 signals:
-    void setMonsterHp(int num);
+    void setPlayerHp(int num);
+    void setPlayerEnabled();
 public slots:
     void damage(int num);
+    void monsterAttack();
 private:
     int hp;
     int hpMax;
     int attack;
     int defence;
     int m_damage;
-protected:
-    void run();
+
+    QMovie *mov_Monster;
+    QLabel *lab_Monster;
+    QProgressBar *pro_Monster;
 };
 
 #endif // MONSTER_H

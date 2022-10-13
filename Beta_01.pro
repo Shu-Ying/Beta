@@ -13,7 +13,7 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        widget.cpp \
+    widget.cpp \
     player.cpp \
     monster.cpp
 

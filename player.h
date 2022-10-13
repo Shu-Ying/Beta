@@ -2,9 +2,16 @@
 #define PLAYER_H
 
 #include <QWidget>
-#include <QThread>
+#include <QPushButton>
+#include <QLabel>
+#include <QProgressBar>
+#include <QMovie>
+#include <QTimer>
 
-class Player : public QThread
+#include "widget.h"
+#include "monster.h"
+
+class Player : public QWidget
 {
     Q_OBJECT
 public:
@@ -13,18 +20,29 @@ public:
     int getHp();
     int getAttack();
     int getDefence();
-signals:
-    void setPlayerHp(int num);
-public slots:
-    void damage(int num);
-private:
-    int attack; //攻击
-    int defence; //防御
+
+    int attack;
+    int defence;
     int hpMax;
     int hp;
     int p_damage;
-protected:
-    void run();
+
+    void playerMain(QWidget *parent = 0);
+signals:
+    void setMonsterHp(int num);
+    void monsterAttack();
+public slots:
+    void damage(int num);
+    void setPlayerEnabled();
+private:
+    QLabel *lab_Player;
+    QLabel *lab_Pea;
+    QMovie *mov_Player;
+    QProgressBar *pro_Player;
+    QPushButton *btn_PlayerAttack;
+    QPushButton *btn_PlayerDefence;
 };
+
+
 
 #endif // PLAYER_H
